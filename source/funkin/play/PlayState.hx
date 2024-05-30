@@ -1534,7 +1534,7 @@ class PlayState extends MusicBeatSubState
     add(healthBar);
 
     // The score text below the health bar.
-    scoreText = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, '', 20);
+    scoreText = new FlxText(0, healthBarBG.y + 30, 0, '', 20);
     scoreText.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     scoreText.scrollFactor.set();
     scoreText.zIndex = 802;
@@ -2020,11 +2020,11 @@ class PlayState extends MusicBeatSubState
     // TODO: Add functionality for modules to update the score text.
     if (isBotPlayMode)
     {
-      scoreText.text = 'Bot Play Enabled';
+      scoreText.text = 'Combo: ' + Highscore.tallies.combo + ' | Max Combo: ' + Highscore.tallies.maxCombo + ' | Misses: ' + Highscore.tallies.missed + ' | TNH: ' + Highscore.tallies.totalNotesHit + '/' + Highscore.tallies.totalNotes;
     }
     else
     {
-      scoreText.text = 'Score:' + songScore;
+      scoreText.text = 'Score: ' + songScore + ' | Combo: ' + Highscore.tallies.combo + ' | Max Combo: ' + Highscore.tallies.maxCombo + ' | Misses: ' + Highscore.tallies.missed + ' | TNH: ' + Highscore.tallies.totalNotesHit + '/' + Highscore.tallies.totalNotes;
     }
   }
 
