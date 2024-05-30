@@ -51,6 +51,7 @@ class PauseSubState extends MusicBeatSubState
     {text: 'Restart Song', callback: restartPlayState},
     {text: 'Change Difficulty', callback: switchMode.bind(_, Difficulty)},
     {text: 'Enable Practice Mode', callback: enablePracticeMode, filter: () -> !(PlayState.instance?.isPracticeMode ?? false)},
+    {text: 'Enable Bot Play', callback: enableBotPlay, filter: () -> !(PlayState.instance?.isBotPlayMode ?? false)},
     {text: 'Exit to Menu', callback: quitToMenu},
   ];
 
@@ -597,6 +598,14 @@ class PauseSubState extends MusicBeatSubState
     if (PlayState.instance == null) return;
 
     PlayState.instance.isPracticeMode = true;
+    state.regenerateMenu();
+  }
+  
+  static function enableBotPlay(state:PauseSubState):Void
+  {
+    if (PlayState.instance == null) return;
+
+    PlayState.instance.isBotPlayMode = true;
     state.regenerateMenu();
   }
 
